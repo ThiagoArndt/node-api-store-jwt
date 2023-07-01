@@ -14,9 +14,11 @@ Ou seja, você precisará inserir a senha e seu nome de usuário da sua ferramen
 Bem como o nome do seu banco de dados e, caso queira, sua "Secret Key" do JWT Token.
 
 Caso você tenha algum problema com os modelos, instale o módulo "sequelize-auto" globalmente, assim:
+
 ```npm install -g sequelize-auto```
 
 Agora, basta rodar um comando para gerar os modelos:
+
 ```sequelize-auto -h localhost -d storedb -u root -p 3306 -x 123456 -e mysql -o "./models"```
 
 OBSERVAÇÃO: O comando acima é apenas um exemplo, olhe a documentação para entender melhor.
