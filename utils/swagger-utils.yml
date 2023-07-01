@@ -1,0 +1,324 @@
+openapi: 3.0.3
+info:
+  title: Localhost
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: http://localhost
+paths:
+  /createCategories:
+    post:
+      tags:
+        - Categories
+      summary: createCategories
+      description: createCategories
+      operationId: createcategories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome_categoria:
+                  type: string
+                  example: ''
+            example:
+              nome_categoria: ''
+      responses:
+        '200':
+          description: ''
+  /getCategories:
+    get:
+      tags:
+        - Categories
+      summary: getCategories
+      description: getCategories
+      operationId: getcategories
+      responses:
+        '200':
+          description: ''
+  /updateSubject:
+    put:
+      tags:
+        - Categories
+      summary: updateCategories
+      description: updateCategories
+      operationId: updatecategories
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: INT
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome_categoria:
+                  type: string
+                  example: ''
+            example:
+              nome_categoria: ''
+      responses:
+        '200':
+          description: ''
+  /deleteCategories:
+    delete:
+      tags:
+        - Categories
+      summary: deleteCategories
+      description: deleteCategories
+      operationId: deletecategories
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: INT
+      responses:
+        '200':
+          description: ''
+  /createOrders:
+    post:
+      tags:
+        - Orders
+      summary: createOrders
+      description: createOrders
+      operationId: createorders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cod_produto:
+                  type: number
+                  example: 1
+            example:
+              cod_produto: 1
+      responses:
+        '200':
+          description: ''
+  /getOrders:
+    get:
+      tags:
+        - Orders
+      summary: getOrders
+      description: getOrders
+      operationId: getorders
+      responses:
+        '200':
+          description: ''
+  /updatepOrders:
+    put:
+      tags:
+        - Orders
+      summary: updateOrders
+      description: updateOrders
+      operationId: updateorders
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: INT
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cod_produto:
+                  type: number
+                  example: 1
+                qtde_pedido:
+                  type: string
+                  example: ''
+            example:
+              cod_produto: 1
+              qtde_pedido: ''
+      responses:
+        '200':
+          description: ''
+  /deleteOrders:
+    delete:
+      tags:
+        - Orders
+      summary: deleteOrders
+      description: deleteOrders
+      operationId: deleteorders
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: INT
+      responses:
+        '200':
+          description: ''
+  /createProducts:
+    post:
+      tags:
+        - Products
+      summary: createProducts
+      description: createProducts
+      operationId: createproducts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_categoria:
+                  type: number
+                  example: 1
+                nome_produto:
+                  type: string
+                  example: ''
+                qtde_produto:
+                  type: string
+                  example: ''
+            example:
+              id_categoria: 1
+              nome_produto: ''
+              qtde_produto: ''
+      responses:
+        '200':
+          description: ''
+  /getProducts:
+    get:
+      tags:
+        - Products
+      summary: getProducts
+      description: getProducts
+      operationId: getproducts
+      parameters:
+        - name: id_categoria
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: INT
+        - name: qtde_pedido
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: INT
+      responses:
+        '200':
+          description: ''
+  /updateProducts:
+    put:
+      tags:
+        - Products
+      summary: updateProducts
+      description: updateProducts
+      operationId: updateproducts
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: INT
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_categoria:
+                  type: number
+                  example: 1
+                nome_produto:
+                  type: string
+                  example: ''
+                qtde_produto:
+                  type: string
+                  example: ''
+            example:
+              id_categoria: 1
+              nome_produto: ''
+              qtde_produto: ''
+      responses:
+        '200':
+          description: ''
+  /deleteSubject:
+    delete:
+      tags:
+        - Products
+      summary: deleteProducts
+      description: deleteProducts
+      operationId: deleteproducts
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: INT
+      responses:
+        '200':
+          description: ''
+  /registerUser:
+    post:
+      tags:
+        - Auth
+      summary: registerUser
+      description: registerUser
+      operationId: registeruser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_name:
+                  type: string
+                  example: É o thigas2
+                user_password:
+                  type: string
+                  example: '123456'
+            example:
+              user_name: É o thigas2
+              user_password: '123456'
+      responses:
+        '200':
+          description: ''
+  /loginUser:
+    post:
+      tags:
+        - Auth
+      summary: loginUser
+      description: loginUser
+      operationId: loginuser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_name:
+                  type: string
+                  example: É o thigas2
+                user_password:
+                  type: string
+                  example: '123456'
+            example:
+              user_name: É o thigas2
+              user_password: '123456'
+      responses:
+        '200':
+          description: ''
+tags:
+  - name: Categories
+  - name: Orders
+  - name: Products
+  - name: Auth

@@ -8,32 +8,29 @@ export const getOrders = async (req, res) => {
     const data = await orders.findAll({})
     res.send({ data: data })
   } catch (e) {
-    res.status(400).send({message: "Erro ao acessar a tabela de pedido"})
+    res.status(400).send({ message: 'Erro ao acessar a tabela de pedido' })
   }
 }
 
 export const createOrders = async (req, res) => {
-  var qtdeProduto = null;
-    const {cod_produto} = req.body;
-    try{
-        const product = await products.findOne({ where: { cod_produto } })
-        // console.log(product.dataValues.qtde_produto);
-        qtdeProduto = product.dataValues.qtde_produto;
+  var qtdeProduto = null
+  const { cod_produto } = req.body
+  try {
+    const product = await products.findOne({ where: { cod_produto } })
+    qtdeProduto = product.dataValues.qtde_produto
 
-        if(qtdeProduto <= 3){
-          qtdeProduto = 4
-        }
-        else if(qtdeProduto > 3 && qtdeProduto < 7){
-          qtdeProduto = 3;
-        }
-        else{
-         return res.status(400).send({message: "Quantidade do produto deve ser menor que 7"})
-          
-        }
-    }catch(e){
-      return res.status(400).send({message: "Código do produto inexistente"})
-     
+    if (qtdeProduto <= 3) {
+      qtdeProduto = 4
+    } else if (qtdeProduto > 3 && qtdeProduto < 7) {
+      qtdeProduto = 3
+    } else {
+      return res
+        .status(400)
+        .send({ message: 'Quantidade do produto deve ser menor que 7' })
     }
+  } catch (e) {
+    return res.status(400).send({ message: 'Código do produto inexistente' })
+  }
 
   try {
     await orders.create({
@@ -44,12 +41,12 @@ export const createOrders = async (req, res) => {
       message: 'Um novo registro de pedido foi inserido no Banco de dados'
     })
   } catch (e) {
-    res.status(400).send({message: "Erro ao Inserir um novo pedido"})
+    res.status(400).send({ message: 'Erro ao Inserir um novo pedido' })
   }
 }
 
 export const updateOrders = async (req, res) => {
-  const { qtde_pedido, cod_produto  } = req.body
+  const { qtde_pedido, cod_produto } = req.body
   const { id } = req.query
   try {
     await orders.update(
@@ -60,7 +57,7 @@ export const updateOrders = async (req, res) => {
       message: `O pedido com id ${id} foi atualizado no Banco de dados`
     })
   } catch (e) {
-    res.status(400).send({message: "Erro ao Atualizar um pedido"})
+    res.status(400).send({ message: 'Erro ao Atualizar um pedido' })
   }
 }
 
@@ -72,6 +69,6 @@ export const deleteOrders = async (req, res) => {
       message: `O pedido com id ${id} foi deletado no Banco de dados`
     })
   } catch (e) {
-    res.status(400).send({message: "Erro ao Deletar um pedido"})
+    res.status(400).send({ message: 'Erro ao Deletar um pedido' })
   }
 }
